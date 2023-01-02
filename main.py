@@ -64,7 +64,7 @@ def parse_sentences(file_content: str) -> list:
     ]
 
 
-def generate_histogram(words: str) -> dict:
+def generate_histogram(words: list[str]) -> dict:
     histogram_dict = {}
     for word in words:
         histogram_dict.setdefault(word, 0)
@@ -72,7 +72,7 @@ def generate_histogram(words: str) -> dict:
     return histogram_dict
 
 
-def write_file(histogram: dict, sentences: list, out_file: object) -> None:
+def write_file(histogram: dict, sentences: list, out_file) -> None:
     for word, _ in sorted(histogram.items(), key=lambda x: x[1], reverse=True):
         sentences_containing_word = [sentence for sentence in sentences if word in sentence]
         out_file.write(f"<h2>{word.eng} -> {word.germ}</h2>")
